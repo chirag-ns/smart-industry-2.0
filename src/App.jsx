@@ -8,7 +8,7 @@ import {
   Lock, Unlock, TrendingUp, Radio, Eye, Brain, HelpCircle, HardDrive
 } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 
 // Mapping devices to their specific symbols
 const deviceIconMap = {
