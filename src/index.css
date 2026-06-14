@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0a0e17; /* cyber-black */
+  color: #e2e8f0;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e17;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Glow animations for dashboards */
+@keyframes glow-red {
+  0% { box-shadow: 0 0 4px rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); }
+  100% { box-shadow: 0 0 12px rgba(239, 68, 68, 0.5); border-color: rgba(239, 68, 68, 0.8); }
+}
+
+@keyframes glow-cyan {
+  0% { box-shadow: 0 0 4px rgba(0, 240, 255, 0.15); border-color: rgba(0, 240, 255, 0.3); }
+  100% { box-shadow: 0 0 12px rgba(0, 240, 255, 0.5); border-color: rgba(0, 240, 255, 0.8); }
+}
+
+@keyframes glow-amber {
+  0% { box-shadow: 0 0 4px rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3); }
+  100% { box-shadow: 0 0 12px rgba(245, 158, 11, 0.5); border-color: rgba(245, 158, 11, 0.8); }
+}
+
+.animate-glow-red {
+  animation: glow-red 2.0s ease-in-out infinite alternate;
+}
+
+.animate-glow-cyan {
+  animation: glow-cyan 2.0s ease-in-out infinite alternate;
+}
+
+.animate-glow-amber {
+  animation: glow-amber 2.0s ease-in-out infinite alternate;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+  transform-origin: center;
+}
+
+/* Slide in drawer animation */
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Fade in banner animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+

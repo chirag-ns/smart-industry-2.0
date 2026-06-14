@@ -1,0 +1,31 @@
+# Dependency directories
+node_modules/
+backend/node_modules/
+
+# Logs
+*.log
+build_error.log
+
+# Build outputs
+dist/
+backend/dist/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+
+# IDE and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.gemini/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class

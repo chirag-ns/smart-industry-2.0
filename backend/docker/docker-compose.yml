@@ -1,0 +1,46 @@
+services:
+
+  cctv_camera:
+    image: alpine
+    container_name: cctv_camera
+    command: sh -c "while true; do ping edge_gateway; sleep 3; done"
+    networks:
+      - orbit_iot_net
+
+  smart_sensor:
+    image: alpine
+    container_name: smart_sensor
+    command: sh -c "while true; do ping edge_gateway; sleep 5; done"
+    networks:
+      - orbit_iot_net
+
+  wifi_ap:
+    image: alpine
+    container_name: wifi_ap
+    command: sh -c "while true; do ping operator_terminal; sleep 4; done"
+    networks:
+      - orbit_iot_net
+
+  edge_gateway:
+    image: nginx
+    container_name: edge_gateway
+    networks:
+      - orbit_iot_net
+
+  operator_terminal:
+    image: alpine
+    container_name: operator_terminal
+    command: sh -c "while true; do ping edge_gateway; sleep 6; done"
+    networks:
+      - orbit_iot_net
+
+  iot_storage:
+    image: alpine
+    container_name: iot_storage
+    command: sh -c "while true; do ping edge_gateway; sleep 7; done"
+    networks:
+      - orbit_iot_net
+
+networks:
+  orbit_iot_net:
+    external: true

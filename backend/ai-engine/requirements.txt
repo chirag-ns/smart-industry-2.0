@@ -1,0 +1,4 @@
+scapy==2.5.0
+pymongo==4.6.3
+numpy==1.26.4
+pandas==2.2.1

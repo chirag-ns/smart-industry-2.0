@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: orbitguard_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - orbit_net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./docker/Dockerfile.api
+    container_name: orbitguard_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/Orbitguard
+      - DB_MODE=mongo
+      - RUN_SIMULATOR=true
+    depends_on:
+      - mongodb
+    networks:
+      - orbit_net
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: orbitguard_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - orbit_net
+
+networks:
+  orbit_net:
+    driver: bridge
+
+volumes:
+  mongo_data:

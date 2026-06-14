@@ -1,0 +1,20 @@
+# Python AI Engine Dockerfile
+FROM python:3.9-slim
+
+# Install system dependencies for Scapy and networking
+RUN apt-get update && apt-get install -y \
+    libpcap-dev \
+    tcpdump \
+    net-tools \
+    && rm -rf /var/lib/apt/list/*
+
+WORKDIR /app
+
+# Install Python dependencies
+COPY ai-engine/requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ai-engine/ .
+
+# Run the orchestrator service
+CMD ["python", "-u", "ai_engine_service.py"]
